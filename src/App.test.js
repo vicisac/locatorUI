@@ -1,37 +1,68 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import TestUtils from 'react-addons-test-utils';
+import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
+import { Container, Row, Col, Dropdown, DropdownToggle, DropdownMenu } from 'reactstrap';
+import EmployeeDropdown from './EmployeeDropdown';
+import FloorDropdown from './FloorDropdown';
+import FloorDropdownItem from './FloorDropdownItem';
+import $ from 'jquery';
+
 import App from './App';
 
+describe('<App />', () => {
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
-});
+    it('should render stuff', () => {
+        const wrapper = shallow(<App />);
+        expect(wrapper.length).toEqual(1);
+    });
 
-it('No employee picture is shown during startup', () => {
-    // Render a locator
-    const locator = TestUtils.renderIntoDocument(
-        <App/>
-    );
+    it('No employee picture is shown during startup', () => {
 
-    // Verify that it's Off by default
-    expect(locator.state.showEmployee).toEqual(false);
+        const wrapper = shallow(<App />);
+        // Verify that it's Off by default
+        expect(wrapper.state('showEmployee')).toEqual(false);
 
-});
+    });
 
-it('Initial state of Floor dropdown', () => {
-    // Render a locator
+    it('Check state of Floor dropdown after startup', () => {
 
-    var locator = TestUtils.renderIntoDocument(
-        <App/>
-    );
+        const wrapper = mount(<App />)
+            .find('div')
+            .find('Container')
+            .find('Row')
+            .find('Col')
+            .find('FloorDropdown')
+            .find('Dropdown')
+            .find('DropdownToggle');
+        expect(wrapper.text()).toEqual('Select a Floor');
 
-    var employeeDropdown = TestUtils.findRenderedDOMComponentWithTag(
-       locator,
-        'EmployeeDropdown'
-    );
+    });
 
-    // Verify that it's Off by default
-//    expect(floorDropdown.state.floorName).toEqual('Select a Floor');
+    it('Check state Employee dropdown after startup', () => {
+
+        const wrapper = mount(<App />)
+            .find('div')
+            .find('Container')
+            .find('Row')
+            .find('Col')
+            .find('EmployeeDropdown')
+            .find('Dropdown')
+            .find('DropdownToggle');
+        expect(wrapper.text()).toEqual('Select an Employee');
+
+    });
+
+    it('Check listed items of Floor dropdown', () => {
+
+        const wrapper = mount(<App />)
+            .render()
+            .find('div')
+            .find('Container')
+            .find('Row')
+            .find('Col')
+            .find('FloorDropdown')
+            .find('Dropdown');
+        console.log( wrapper.length);
+
+    });
 });

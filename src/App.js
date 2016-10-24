@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Row, Col } from 'reactstrap';
-import EmployeesDropdown from './EmployeesDropdown';
+import EmployeeDropdown from './EmployeeDropdown';
 import FloorDropdown from './FloorDropdown';
 import ImageMap from './ImageMap';
 
@@ -97,13 +97,13 @@ var App=React.createClass({
     return (
 
         <div className="selectorBox">
-          <Container>
+          <Container className="Container">
             <h1>Resource Locator</h1>
             <hr/>
             <Row>
               <Col>
-                <EmployeesDropdown onChange={this.onSelectEmployee} url="http://localhost:8080/employees" ref={(ref) => this.state.myEmployee = ref}/>
-                <FloorDropdown onChange={this.onSelectFloor} url="http://localhost:8080/floors" ref={(ref) => this.state.myFloor = ref}/>
+                <EmployeeDropdown className="MyEmployees" onChange={this.onSelectEmployee} url="http://localhost:8080/employees" ref={(ref) => this.state.myEmployee = ref}/>
+                <FloorDropdown className="MyFloors" onChange={this.onSelectFloor} url="http://localhost:8080/floors" ref={(ref) => this.state.myFloor = ref}/>
                 <ImageMap className="FloorMap" ref={(ref) => this.state.myMap = ref}/>
                 <ImageMap show={false}
                           className="staff"

@@ -47,7 +47,8 @@ var FloorDropdown = React.createClass({
         var floorNodes = this.state.data.map(
             function (floor) {
                 return (
-                    <FloorDropdownItem floorData={floor}
+                    <FloorDropdownItem className="floorDropdownItem"
+                                       floorData={floor}
                                        key={floor.floorId}
                                        update={this.onClickUpdateFloor}/>
                 );
@@ -56,10 +57,10 @@ var FloorDropdown = React.createClass({
 
         return (
             <Dropdown tether className="m-y-1" isOpen={this.state.dd4} toggle={() => { this.setState({ dd4: !this.state.dd4 })}}>
-                <DropdownToggle caret color="primary">
+                <DropdownToggle className="floorDropdownToggle" caret color="primary">
                     {this.state.floorName}
                 </DropdownToggle>
-                <DropdownMenu>
+                <DropdownMenu className="floorDropdownMenu">
                     {floorNodes}
                 </DropdownMenu>
             </Dropdown>

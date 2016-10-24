@@ -8,7 +8,7 @@ var EmployeeDropdownItem = React.createClass({
 
     render: function() {
         return (
-            <DropdownItem className="employeeList"
+            <DropdownItem className="employeeItem"
                           onClick={this.props.update}
                           value={this.props.employeeData.employeeGuid}>
                 {this.props.employeeData.lastName + ", " + this.props.employeeData.firstName}

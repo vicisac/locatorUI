@@ -6,7 +6,7 @@ import { Dropdown, DropdownToggle, DropdownMenu } from 'reactstrap';
 import EmployeeDropdownItem from './EmployeeDropdownItem';
 import $ from 'jquery';
 
-var EmployeesDropdown = React.createClass({
+var EmployeeDropdown = React.createClass({
 
     loadCommentsFromServer: function() {
         this.serverRequest = $.get(this.props.url, function (result) {
@@ -47,7 +47,8 @@ var EmployeesDropdown = React.createClass({
         var employeeNodes = this.state.data.map(
             function (employee) {
                 return (
-                    <EmployeeDropdownItem employeeData={employee}
+                    <EmployeeDropdownItem className="EmployeeDropdownItem"
+                                          employeeData={employee}
                                           key={employee.employeeGuid}
                                           update={this.onClickUpdateName}
                     />
@@ -57,10 +58,10 @@ var EmployeesDropdown = React.createClass({
 
         return (
             <Dropdown tether className="m-y-1" isOpen={this.state.dd4} toggle={() => { this.setState({ dd4: !this.state.dd4 })}}>
-                <DropdownToggle caret color="primary">
+                <DropdownToggle className="EmployeeDropdownToggle" caret color="primary">
                     {this.state.chosenName}
                 </DropdownToggle>
-                <DropdownMenu>
+                <DropdownMenu className="EmployeeDropdownMenu">
                     {employeeNodes}
                 </DropdownMenu>
             </Dropdown>
@@ -68,4 +69,4 @@ var EmployeesDropdown = React.createClass({
     }
 });
 
-export default EmployeesDropdown;
+export default EmployeeDropdown;
