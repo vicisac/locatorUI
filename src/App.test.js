@@ -1,11 +1,11 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { mount } from 'enzyme';
+import sinon from 'sinon';
 import { Container, Row, Col, Dropdown, DropdownToggle, DropdownMenu } from 'reactstrap';
 import EmployeeDropdown from './EmployeeDropdown';
 import FloorDropdown from './FloorDropdown';
 import FloorDropdownItem from './FloorDropdownItem';
-import $ from 'jquery';
 
 import App from './App';
 
@@ -52,17 +52,28 @@ describe('<App />', () => {
 
     });
 
-    it('Check listed items of Floor dropdown', () => {
+    it('FloorDropdown calls componentDidMount', () => {
 
-        const wrapper = mount(<App />)
-            .render()
-            .find('div')
-            .find('Container')
-            .find('Row')
-            .find('Col')
-            .find('FloorDropdown')
-            .find('Dropdown');
-        console.log( wrapper.length);
+        sinon.spy(FloorDropdown.prototype, 'componentDidMount');
+        const wrapper = mount(
+            <FloorDropdown
+                className="MyFloors"
+                url="http://localhost:8080/floors"/>
+        );
+
+        expect(FloorDropdown.prototype.componentDidMount.calledOnce).toEqual(true);
 
     });
+
+    it('EmployeeDropdown calls componentDidMount', () => {
+
+        sinon.spy(EmployeeDropdown.prototype, 'componentDidMount');
+        const wrapper = mount(
+            <EmployeeDropdown className="MyEmployees"
+                              url="http://localhost:8080/employees"/>
+        );
+
+        expect(EmployeeDropdown.prototype.componentDidMount.calledOnce).toEqual(true);
+    });
+
 });
