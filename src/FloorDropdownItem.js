@@ -1,7 +1,7 @@
 /**
  * Created by cano on 20.10.2016.
  */
-import React, { Component } from 'react';
+import React from 'react';
 import { DropdownItem } from 'reactstrap';
 
 var FloorDropdownItem = React.createClass({

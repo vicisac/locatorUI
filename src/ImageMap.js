@@ -1,7 +1,7 @@
 /**
  * Created by cano on 20.10.2016.
  */
-import React, { Component } from 'react';
+import React from 'react';
 
 var ImageMap = React.createClass({
 
@@ -31,6 +31,7 @@ var ImageMap = React.createClass({
                      style={this.state.style}
                      onMouseEnter={this.props.hoverEnter}
                      onMouseLeave={this.props.hoverLeave}
+                     alt={this.props.alt}
                 />
             </div>
         );

@@ -1,7 +1,7 @@
 /**
  * Created by cano on 20.10.2016.
  */
-import React, { Component } from 'react';
+import React from 'react';
 import { Dropdown, DropdownToggle, DropdownMenu } from 'reactstrap';
 import EmployeeDropdownItem from './EmployeeDropdownItem';
 import $ from 'jquery';
@@ -15,18 +15,6 @@ var EmployeesDropdown = React.createClass({
             });
         }.bind(this));
 
-        /*
-        $.ajax({
-            url: this.props.url,
-            dataType: 'json',
-            cache: false,
-            success: function(data) {
-                this.setState({data: data});
-            }.bind(this),
-            error: function(xhr, status, err) {
-                console.error(this.props.url, status, err.toString());
-            }.bind(this)
-        });*/
     },
 
     getInitialState: function() {
@@ -69,7 +57,7 @@ var EmployeesDropdown = React.createClass({
 
         return (
             <Dropdown tether className="m-y-1" isOpen={this.state.dd4} toggle={() => { this.setState({ dd4: !this.state.dd4 })}}>
-                <DropdownToggle caret>
+                <DropdownToggle caret color="primary">
                     {this.state.chosenName}
                 </DropdownToggle>
                 <DropdownMenu>

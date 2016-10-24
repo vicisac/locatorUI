@@ -1,29 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import EmployeesDropdown from './EmployeesDropdown';
 import FloorDropdown from './FloorDropdown';
 import ImageMap from './ImageMap';
-
-/*
-class App extends Component {
-
-  render() {
-    return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
-}
-
-*/
-
 
 var App=React.createClass({
 
@@ -52,8 +31,8 @@ var App=React.createClass({
       {
         transition: 'all 0.5s',
         visibility: 'visible',
-        maxWidth: '5%',
-        position: 'absolute',
+        maxWidth: '75px',
+        position: 'relative',
         top: roomData.styleTop,
         left: roomData.styleLeft
       }
@@ -89,8 +68,8 @@ var App=React.createClass({
     {
       transition: 'all 0.5s',
       visibility: 'visible',
-      maxWidth: '35%',
-      position: 'absolute',
+      maxWidth: '200px',
+      position: 'relative',
       top: this.state.myImage.state.style.top,
       left: this.state.myImage.state.style.left
     }
@@ -104,8 +83,8 @@ var App=React.createClass({
     {
       transition: 'all 0.5s',
       visibility: 'visible',
-      maxWidth: '5%',
-      position: 'absolute',
+      maxWidth: '75px',
+      position: 'relative',
       top: this.state.myImage.state.style.top,
       left: this.state.myImage.state.style.left
     }
@@ -126,7 +105,7 @@ var App=React.createClass({
                 <EmployeesDropdown onChange={this.onSelectEmployee} url="http://localhost:8080/employees" ref={(ref) => this.state.myEmployee = ref}/>
                 <FloorDropdown onChange={this.onSelectFloor} url="http://localhost:8080/floors" ref={(ref) => this.state.myFloor = ref}/>
                 <ImageMap className="FloorMap" ref={(ref) => this.state.myMap = ref}/>
-                <ImageMap show ={false}
+                <ImageMap show={false}
                           className="staff"
                           ref={(ref) => this.state.myImage = ref}
                           hoverEnter={this.onMouseEnterHandler}
